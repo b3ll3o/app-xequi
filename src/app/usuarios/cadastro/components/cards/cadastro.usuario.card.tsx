@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function CadastroUsuarioCard({
   children,
@@ -17,9 +10,7 @@ export function CadastroUsuarioCard({
       <CardHeader>
         <CardTitle>Criar uma nova conta</CardTitle>
       </CardHeader>
-      <CardContent>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
     </Card>
-  )
+  );
 }
