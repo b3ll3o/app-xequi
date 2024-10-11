@@ -1,14 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+export type CadastroUsuarioCardProps = {
+  children: React.ReactNode
+  titulo: string
+}
+
 export function CadastroUsuarioCard({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children, titulo
+}: CadastroUsuarioCardProps) {
   return (
     <Card className="m-5">
       <CardHeader>
-        <CardTitle>Criar uma nova conta</CardTitle>
+        <CardTitle>{titulo}</CardTitle>
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>

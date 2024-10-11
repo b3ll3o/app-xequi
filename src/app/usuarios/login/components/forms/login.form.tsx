@@ -15,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input";
 import api from "@/app/api/api";
 import { AxiosError } from "axios";
-import { Erro } from "@/app/usuarios/domain/entities/erro";
 import { ErrosResponse } from "@/app/usuarios/domain/responses/erros.response";
 
 const FormSchema = z.object({
@@ -31,12 +30,12 @@ const FormSchema = z.object({
     .max(20, "Maximo de 20 caracteres"),
 });
 
-export type CadastroUsuarioFormProps = {
+export type LoginUsuarioFormProps = {
   sucessoHandler?: Function,
   erroHandler?: Function
 }
 
-export function CadastroUsuarioForm({sucessoHandler}: CadastroUsuarioFormProps) {
+export function LoginUsuarioForm({sucessoHandler}: LoginUsuarioFormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -48,7 +47,7 @@ export function CadastroUsuarioForm({sucessoHandler}: CadastroUsuarioFormProps) 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const { email, senha } = data;
     api
-      .post("/usuarios", { email, senha })
+      .post("/auth/login", { email, senha })
       .then((r) => {
         if(sucessoHandler){
           sucessoHandler()
@@ -98,7 +97,7 @@ export function CadastroUsuarioForm({sucessoHandler}: CadastroUsuarioFormProps) 
           )}
         />
 
-        <Button type="submit">Cadastre-se</Button>
+        <Button type="submit">Entrar</Button>
       </form>
     </Form>
   );
